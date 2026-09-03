@@ -1,4 +1,7 @@
-const BASE = '/api'
+const envApiUrl = import.meta.env.VITE_API_URL
+const BASE = envApiUrl
+  ? `${envApiUrl.replace(/\/+$/, '').replace(/\/api$/, '')}/api`
+  : '/api'
 
 function getToken() {
   return localStorage.getItem('writely_token')
